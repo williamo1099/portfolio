@@ -39,10 +39,10 @@ export default function ReiColorPaletteImage() {
   return (
     <div className="relative w-[150px] h-[250px] mx-auto">
       <Image
-        src="/images/color-palette.png"
+        src="/images/color-palette.webp"
         alt="Rei Ayanami"
         width={150}
-        height={225}
+        height={250}
         priority
       />
 

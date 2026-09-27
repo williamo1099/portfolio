@@ -25,10 +25,10 @@ export default function AboutMePicture() {
         }}
       >
         <Image
-          src="/images/profile.png"
+          src="/images/profile.webp"
           alt="Profile Picture"
           width={400}
-          height={400}
+          height={600}
           className="relative z-10 -translate-y-24 lg:-translate-y-36"
         />
       </motion.div>
