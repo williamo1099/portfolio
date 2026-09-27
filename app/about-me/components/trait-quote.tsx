@@ -12,7 +12,7 @@ export default function TraitQuote({ quote }: TraitQuoteProps) {
       {/* Quote icon */}
       <div className="text-5xl font-mono w-10 h-10">
         <div className="relative w-10 h-10">
-          <Image src="/icons/quote.svg" alt="Quote Icon" layout="fill" />
+          <Image src="/icons/quote.svg" alt="Quote Icon" fill />
         </div>
       </div>
 

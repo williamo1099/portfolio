@@ -37,7 +37,7 @@ export default function TraitModal({
             onClick={onClose}
             className="relative w-8 h-8 hover:scale-110 transform transition-transform duration-300"
           >
-            <Image src="/icons/close.svg" alt="Close Icon" layout="fill" />
+            <Image src="/icons/close.svg" alt="Close Icon" fill />
           </button>
         </div>
 

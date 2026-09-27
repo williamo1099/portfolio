@@ -27,7 +27,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             project.imagePath
           }
           alt={project.title}
-          layout="fill"
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
           objectFit="cover"
         />
       </div>

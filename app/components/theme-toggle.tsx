@@ -49,7 +49,7 @@ export default function ThemeToggle() {
         <Image
           src={`/icons/${theme === "light" ? "light-mode" : "dark-mode"}.svg`}
           alt={`${theme === "light" ? "Light" : "Dark"} Mode Icon`}
-          layout="fill"
+          fill
         />
       </div>
     </motion.button>

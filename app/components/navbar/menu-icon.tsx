@@ -22,14 +22,14 @@ export default function MenuIcon({ isMenuOpen, toggleMenu }) {
           <Image
             src={`/icons/close${theme === "dark" ? "-dark" : ""}.svg`}
             alt="Close Icon"
-            layout="fill"
+            fill
           />
         ) : (
           // Open icon.
           <Image
             src={`/icons/menu${theme === "dark" ? "-dark" : ""}.svg`}
             alt="Menu Icon"
-            layout="fill"
+            fill
           />
         )}
       </div>
