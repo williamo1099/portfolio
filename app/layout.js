@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import ThemeToggle from "./components/theme-toggle";
 import TriangleBackground from "./components/triangle-background";
+import { poppins } from "./fonts/poppins";
 
 import "./globals.css";
 
@@ -51,7 +52,7 @@ export default function RootLayout({ children }) {
           overflow-hidden m-0 p-0
 
           // Typography
-          font-poppins text-foreground-light dark:text-foreground-dark
+          font-poppins ${poppins.variable} text-foreground-light dark:text-foreground-dark
 
           // Background
           bg-background-light dark:bg-background-dark
