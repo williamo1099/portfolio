@@ -1,22 +1,23 @@
-import { ApiResponse } from "@/types/api";
+import { isApiEnabled, resolveAssetUrl } from "@/lib/env";
+import { curriculumVitaePath } from "@/data/curriculum-vitae";
+import { getJson } from "@/services/http";
 
 export async function fetchCurriculumVitaePath(): Promise<string> {
+  if (!isApiEnabled) {
+    return curriculumVitaePath;
+  }
+
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/curriculum-vitae`
-    );
+    const data = await getJson<Record<string, unknown>>("/curriculum-vitae");
+    const path = typeof data?.path === "string" ? data.path.trim() : "";
 
-    const data: ApiResponse<Record<string, unknown>> = await response.json();
-
-    if (!data.success) {
-      throw data.message;
+    if (!path) {
+      throw new Error("API returned an empty curriculum vitae path.");
     }
 
-    const path = data.data.path as string;
-
-    return path;
+    return resolveAssetUrl(path);
   } catch (ex) {
-    console.error(ex);
-    return "";
+    console.warn("[curriculum-vitae] API gagal, pakai file lokal:", ex);
+    return curriculumVitaePath;
   }
 }

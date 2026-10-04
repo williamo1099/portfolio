@@ -34,11 +34,14 @@ export default function ContactForm() {
     setFailed(false);
 
     try {
-      await sendMail({
+      const sent = await sendMail({
         name: formData.name,
         email: formData.email,
         message: formData.message,
       });
+
+      if (!sent) throw new Error("Message was not sent.");
+
       setSuccess(true);
     } catch (error) {
       setFailed(true);

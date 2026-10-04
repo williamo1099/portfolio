@@ -5,17 +5,15 @@ import { motion } from "motion/react";
 import HighlightedText from "@/app/components/highlighted-text";
 import Title from "@/app/components/title";
 
+import { curriculumVitaePath } from "@/data/curriculum-vitae";
 import { fetchCurriculumVitaePath } from "@/services/curriculum-vitae-service";
 
 export default function AboutMeStory() {
-  const [path, setPath] = useState("/documents/cv.pdf");
+  const [path, setPath] = useState(curriculumVitaePath);
 
   useEffect(() => {
     const fetchCV = async () => {
-      const path = await fetchCurriculumVitaePath();
-      setPath(
-        process.env.NEXT_PUBLIC_API_URL.replace("/api", "/") + "storage/" + path
-      );
+      setPath(await fetchCurriculumVitaePath());
     };
 
     fetchCV();

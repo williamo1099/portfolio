@@ -1,4 +1,5 @@
 "use client";
+import { resolveAssetUrl } from "@/lib/env";
 import { Project } from "@/types/project";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -21,11 +22,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="w-full h-24 lg:h-56 relative mb-3">
         <Image
           className="rounded"
-          src={
-            process.env.NEXT_PUBLIC_API_URL.replace("/api", "/") +
-            "storage/" +
-            project.imagePath
-          }
+          src={resolveAssetUrl(project.imagePath)}
           alt={project.title}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"

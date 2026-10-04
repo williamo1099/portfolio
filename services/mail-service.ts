@@ -1,3 +1,4 @@
+import { isApiEnabled } from "@/lib/env";
 import { ApiResponse } from "@/types/api";
 
 interface SendMailProps {
@@ -11,6 +12,11 @@ export async function sendMail({
   email,
   message,
 }: SendMailProps): Promise<boolean> {
+  if (!isApiEnabled) {
+    console.warn("[mail] API belum dikonfigurasi, pesan tidak dikirim.");
+    return false;
+  }
+
   try {
     let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mail`, {
       method: "POST",
