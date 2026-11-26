@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 
 interface MenuItemProps {
@@ -17,6 +18,16 @@ export default function MenuItem({
   isActive,
   isMenuOpen,
 }: MenuItemProps) {
+  const pathname = usePathname();
+  const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+  const isScrollablePage = normalizedPath !== "/misc" && link !== "/misc";
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isScrollablePage) return;
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("scroll-to-section", { detail: link }));
+  };
+
   return (
     <motion.li
       initial={{ x: 100, opacity: 0 }} // Start off-screen
@@ -30,6 +41,7 @@ export default function MenuItem({
     >
       <Link
         href={link}
+        onClick={handleClick}
         className={`
           // Spacing
           border-b-2 border-transparent px-4 py-2
