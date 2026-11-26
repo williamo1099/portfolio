@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 
@@ -7,8 +8,15 @@ interface MenuIconProps {
   toggleMenu: () => void;
 }
 
-export default function MenuIcon({ isMenuOpen, toggleMenu }) {
+export default function MenuIcon({ isMenuOpen, toggleMenu }: MenuIconProps) {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && theme === "dark";
 
   return (
     <button
@@ -20,14 +28,14 @@ export default function MenuIcon({ isMenuOpen, toggleMenu }) {
         {isMenuOpen ? (
           // Close icon.
           <Image
-            src={`/icons/close${theme === "dark" ? "-dark" : ""}.svg`}
+            src={`/icons/close${isDark ? "-dark" : ""}.svg`}
             alt="Close Icon"
             fill
           />
         ) : (
           // Open icon.
           <Image
-            src={`/icons/menu${theme === "dark" ? "-dark" : ""}.svg`}
+            src={`/icons/menu${isDark ? "-dark" : ""}.svg`}
             alt="Menu Icon"
             fill
           />

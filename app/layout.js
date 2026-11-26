@@ -17,6 +17,7 @@ export const viewport = {
 };
 
 export const metadata = {
+  metadataBase: new URL("https://williamoktavianus.dev"),
   title: "William Oktavianus",
   description:
     "Portfolio of William Oktavianus - a software developer, artist and lifelong learner",
@@ -28,21 +29,37 @@ export const metadata = {
     "Artist",
     "Lifelong Learner",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "William Oktavianus",
     description:
       "Portfolio of William Oktavianus - a software developer, artist and lifelong learner",
     url: "https://williamoktavianus.dev",
     siteName: "William Oktavianus",
+    images: [
+      {
+        url: "/images/profile.webp",
+        alt: "William Oktavianus",
+      },
+    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "William Oktavianus",
+    description:
+      "Portfolio of William Oktavianus - a software developer, artist and lifelong learner",
+    images: ["/images/profile.webp"],
   },
   robots: "index, follow",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`
           // Layout
